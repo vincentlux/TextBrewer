@@ -8,3 +8,8 @@ dist/
 .idea
 *.pdf
 *.png
+
+build/
+data/
+resources/
+snap/

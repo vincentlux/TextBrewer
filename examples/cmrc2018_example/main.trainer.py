@@ -105,7 +105,8 @@ def main():
     if args.load_model_type=='bert':
         assert args.init_checkpoint_S is not None
         state_dict_S = torch.load(args.init_checkpoint_S, map_location='cpu')
-        state_weight = {k[5:]:v for k,v in state_dict_S.items() if k.startswith('bert.')}
+        # state_weight = {k[5:]:v for k,v in state_dict_S.items() if k.startswith('bert.')}
+        state_weight = {k:v for k,v in state_dict_S.items()}
         missing_keys,_ = model_S.bert.load_state_dict(state_weight,strict=False)
         assert len(missing_keys)==0
     elif args.load_model_type=='all':

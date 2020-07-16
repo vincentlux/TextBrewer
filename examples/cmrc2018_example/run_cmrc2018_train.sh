@@ -1,16 +1,16 @@
 #set hyperparameters
-BERT_DIR=/path/to/roberta-wwm-base
-OUTPUT_ROOT_DIR=/path/to/output_root_dir
-DATA_ROOT_DIR=/path/to/data_root_dir
+BERT_DIR=/home/vincentlux/proj/mlm/TextBrewer/resources/chinese-roberta-wwm-ext
+OUTPUT_ROOT_DIR=/home/vincentlux/proj/mlm/TextBrewer/snap
+DATA_ROOT_DIR=/home/vincentlux/proj/mlm/TextBrewer/data
 
 STUDENT_CONF_DIR=../student_config/roberta_wwm_config
-cmrc_train_file=$DATA_ROOT_DIR/cmrc2018/squad-style-data/cmrc2018_train.json
-cmrc_dev_file=$DATA_ROOT_DIR/cmrc2018/squad-style-data/cmrc2018_dev.json
+cmrc_train_file=$DATA_ROOT_DIR/cmrc2018/cmrc2018_train.json
+cmrc_dev_file=$DATA_ROOT_DIR/cmrc2018/cmrc2018_dev.json
 
 accu=1
 ep=2
 lr=3
-batch_size=24
+batch_size=12
 length=512
 torch_seed=9580
 

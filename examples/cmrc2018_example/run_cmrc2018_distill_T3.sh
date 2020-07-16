@@ -1,19 +1,19 @@
 #set hyperparameters
-BERT_DIR=/path/to/roberta-wwm-base
-OUTPUT_ROOT_DIR=/path/to/output_root_dir
-DATA_ROOT_DIR=/path/to/data_root_dir
-trained_teacher_model=/path/to/trained_teacher_model_file
+BERT_DIR=/home/vincentlux/proj/mlm/TextBrewer/resources/chinese-roberta-wwm-ext
+OUTPUT_ROOT_DIR=/home/vincentlux/proj/mlm/TextBrewer/snap
+DATA_ROOT_DIR=/home/vincentlux/proj/mlm/TextBrewer/data
+trained_teacher_model=/home/vincentlux/proj/mlm/TextBrewer/snap/cmrc2018_base_lr3e2_teacher/gs885.pkl
 
 STUDENT_CONF_DIR=../student_config/roberta_wwm_config
-cmrc_train_file=$DATA_ROOT_DIR/cmrc2018/squad-style-data/cmrc2018_train.json
-cmrc_dev_file=$DATA_ROOT_DIR/cmrc2018/squad-style-data/cmrc2018_dev.json
-DA_file=$DATA_ROOT_DIR/drcd/DRCD_training.json # used for data augmentation
+cmrc_train_file=$DATA_ROOT_DIR/cmrc2018/cmrc2018_train.json
+cmrc_dev_file=$DATA_ROOT_DIR/cmrc2018/cmrc2018_dev.json
+DA_file=$DATA_ROOT_DIR/drcd/train.json # used for data augmentation
 
 accu=1
 ep=50
 lr=15
 temperature=8
-batch_size=24
+batch_size=12
 length=512
 sopt1=1 # The final learning rate is 1/sopt1 of the initial learning rate; 30 is used in most cases
 torch_seed=9580
@@ -29,7 +29,7 @@ mkdir -p $OUTPUT_DIR
 python -u main.distill.py \
     --vocab_file $BERT_DIR/vocab.txt \
     --do_lower_case \
-    --bert_config_file_T $BERT_DIR/bert_config.json \
+    --bert_config_file_T $BERT_DIR/config.json \
     --bert_config_file_S $STUDENT_CONF_DIR/bert_config_L3.json \
     --tuned_checkpoint_T $trained_teacher_model \
     --init_checkpoint_S $BERT_DIR/pytorch_model.bin \
