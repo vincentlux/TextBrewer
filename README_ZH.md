@@ -21,11 +21,16 @@
 融合并改进了NLP和CV中的多种知识蒸馏技术，提供便捷快速的知识蒸馏框架，
 用于以较低的性能损失压缩神经网络模型的大小，提升模型的推理速度，减少内存占用。
 
-Paper: [https://arxiv.org/abs/2002.12620](https://arxiv.org/abs/2002.12620)
+可以通过[ACL Anthology](https://www.aclweb.org/anthology/2020.acl-demos.2/)或[arXiv pre-print](https://arxiv.org/abs/2002.12620)查看我们的论文。
 
 [完整文档](https://textbrewer.readthedocs.io/)
 
 ## 更新
+
+**Jul 14, 2020**
+* **版本更新至0.1.10**:
+    * 支持apex混合精度训练功能：可通过在`TrainingConfig`中设置`fp16=True`启用。详细设置参见`TraningConfig`的说明。
+    * 在`TrainingConfig`中增加了`data_parallel`选项，使得数据并行与混合精度训练可同时启用。
 
 **Apr 26, 2020**
 
@@ -115,6 +120,7 @@ Paper: [https://arxiv.org/abs/2002.12620](https://arxiv.org/abs/2002.12620)
 * NumPy
 * tqdm
 * Transformers >= 2.0 (可选, Transformer相关示例需要用到)
+* Apex == 0.1.0 (可选，用于混合精度训练)
 
 ### 安装方式
 
@@ -381,22 +387,23 @@ Distiller负责执行实际的蒸馏过程。目前实现了以下的distillers:
 
 ## 已知问题
 
-* FP16精度训练的兼容性尚未测试。
 * 尚不支持DataParallel以外的多卡训练策略。
 
 ## 引用
 
-如果TextBrewer工具包对你的研究工作有所帮助，请在文献中引用下述[技术报告](https://arxiv.org/abs/2002.12620)：
+如果TextBrewer工具包对你的研究工作有所帮助，请在文献中引用我们的[论文](https://www.aclweb.org/anthology/2020.acl-demos.2/)：
 
-```
+```bibtex
 @InProceedings{textbrewer-acl2020-demo,
-  author =  "Yang, Ziqing and Cui, Yiming and Chen, Zhipeng and Che, Wanxiang and Liu, Ting and Wang, Shijin and Hu, Guoping",
-  title =   "{T}ext{B}rewer: {A}n {O}pen-{S}ource {K}nowledge {D}istillation {T}oolkit for {N}atural {L}anguage {P}rocessing",
-  booktitle =   "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
-  year =  "2020",
-  publisher =   "Association for Computational Linguistics"
+    title = "{T}ext{B}rewer: {A}n {O}pen-{S}ource {K}nowledge {D}istillation {T}oolkit for {N}atural {L}anguage {P}rocessing",
+    author = "Yang, Ziqing and Cui, Yiming and Chen, Zhipeng and Che, Wanxiang and Liu, Ting and Wang, Shijin and Hu, Guoping",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+    year = "2020",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.acl-demos.2",
+    pages = "9--16",
 }
- ```
+```
 
 ## 关注我们
 

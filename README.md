@@ -22,11 +22,16 @@
 
 **TextBrewer** is a PyTorch-based model distillation toolkit for natural language processing. It includes various distillation techniques from both NLP and CV field and provides an easy-to-use distillation framework, which allows users to quickly experiment with the state-of-the-art distillation methods to compress the model with a relatively small sacrifice in the performance, increasing the inference speed and reducing the memory usage.
 
-Paper: [https://arxiv.org/abs/2002.12620](https://arxiv.org/abs/2002.12620)
+Check our paper through [ACL Anthology](https://www.aclweb.org/anthology/2020.acl-demos.2/) or [arXiv pre-print](https://arxiv.org/abs/2002.12620).
 
 [Full Documentation](https://textbrewer.readthedocs.io/)
 
 ## Update
+
+**Jul 14, 2020**
+* Updated to 0.1.10:
+    * Now supports mixed precision training with Apex! Just set `fp16` to `True` in `TrainingConfig`. See the documentation of `TrainingConfig` for detail.
+    * Added `data_parallel` option in `TrainingConfig` to enable data parallel training and mixed precision training work together.
 
 **Apr 26, 2020**
 
@@ -116,6 +121,7 @@ See [Full Documentation](https://textbrewer.readthedocs.io/) for detailed usages
   * NumPy
   * tqdm
   * Transformers >= 2.0 (optional, used by some examples)
+  * Apex == 0.1.0 (optional, mixed precision training)
 
 * Install from PyPI
 
@@ -392,19 +398,20 @@ We recommend that users use pre-trained student models whenever possible to full
 
 ## Known Issues
 
-* Compatibility with FP16 training has not been tested.
 * Multi-GPU training support is only available through `DataParallel` currently.
 
 ## Citation
 
-If you find TextBrewer is helpful, please cite [our paper](https://arxiv.org/abs/2002.12620):
-```
+If you find TextBrewer is helpful, please cite [our paper](https://www.aclweb.org/anthology/2020.acl-demos.2/):
+```bibtex
 @InProceedings{textbrewer-acl2020-demo,
-  author =  "Yang, Ziqing and Cui, Yiming and Chen, Zhipeng and Che, Wanxiang and Liu, Ting and Wang, Shijin and Hu, Guoping",
-  title =   "{T}ext{B}rewer: {A}n {O}pen-{S}ource {K}nowledge {D}istillation {T}oolkit for {N}atural {L}anguage {P}rocessing",
-  booktitle =   "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
-  year =  "2020",
-  publisher =   "Association for Computational Linguistics"
+    title = "{T}ext{B}rewer: {A}n {O}pen-{S}ource {K}nowledge {D}istillation {T}oolkit for {N}atural {L}anguage {P}rocessing",
+    author = "Yang, Ziqing and Cui, Yiming and Chen, Zhipeng and Che, Wanxiang and Liu, Ting and Wang, Shijin and Hu, Guoping",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+    year = "2020",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.acl-demos.2",
+    pages = "9--16",
 }
 ```
 
